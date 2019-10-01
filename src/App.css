@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: ''
 }
 
 .App-logo {
@@ -19,4 +20,8 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+body{
+  font-family: 'Gloria Hallelujah', cursive;
 }
