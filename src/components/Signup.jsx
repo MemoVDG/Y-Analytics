@@ -6,7 +6,7 @@ export default function Login() {
         <div className="App-header">
             <Card style={{ width: '30rem' }}>
 
-                <Form className="m-3">
+                <Form className="m-3 white">
 
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label style={{'color' : 'black'}} >Email address</Form.Label>
@@ -18,7 +18,15 @@ export default function Login() {
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">Login</Button>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label style={{'color' : 'black'}} >Full Name</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Terms and conditions" style={{'color' : 'black'}} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">Submit</Button>
                 </Form>
             </Card>
         </div>

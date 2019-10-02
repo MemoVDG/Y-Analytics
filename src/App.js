@@ -5,6 +5,7 @@ import NavBar from './components/NavbarLinks/NavbarPage';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom'
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -14,10 +15,8 @@ function App() {
         <Switch>
           <Route path="/" component={Dashboard} exact></Route>
           <Route path="/login" component={Login} ></Route>
+          <Route path="/signup" component={Signup} ></Route>
         </Switch>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header> */}
       </div>
     </Router>
   );
