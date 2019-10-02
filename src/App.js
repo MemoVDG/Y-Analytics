@@ -1,18 +1,25 @@
 import React from 'react';
 import './App.css';
-import logo from './images/green_logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBarPage from './components/NavbarPage';
-
+import NavBar from './components/NavbarLinks/NavbarPage';
+import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom'
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <NavBarPage/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route path="/" component={Dashboard} exact></Route>
+          <Route path="/login" component={Login} ></Route>
+        </Switch>
+        {/* <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header> */}
+      </div>
+    </Router>
   );
 }
 
