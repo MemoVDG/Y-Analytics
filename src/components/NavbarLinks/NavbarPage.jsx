@@ -11,16 +11,6 @@ export default function NavBar() {
             <Navbar.Brand href="#home"><Link to='/'>Y-Analytics</Link></Navbar.Brand>
             <SignInLinks/>
             <SignOutLinks/>
-            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto ">
-                    <Router>
-                        <Button variant="outline-success" className="mx-3"><Link to="/login" >LOGIN</Link></Button>
-                        <Button variant="outline-success" className="mx-3"><Link to="/signup" >SIGN UP</Link></Button>
-                        <Route exact path="/login" component={Login} />
-                    </Router>
-                </Nav>
-            </Navbar.Collapse> */}
         </Navbar>
 
     );
