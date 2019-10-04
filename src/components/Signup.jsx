@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import fire from '../config/fire';
 
 class Signup extends React.Component {
 
@@ -16,6 +17,13 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+
+        }).then((u)=>{
+            console.log(u);
+        }).catch((error) =>{
+            console.log(error);
+        })
     }
 
     render() {
@@ -23,7 +31,7 @@ class Signup extends React.Component {
             <div className="App-header">
                 <Card style={{ width: '30rem' }}>
 
-                    <Form className="m-3 white" onSubmit={this.handleSubmit}>
+                    <Form className="m-3 white">
 
                         <Form.Group>
                             <Form.Label style={{ 'color': 'black' }} >Email address</Form.Label>
@@ -43,7 +51,7 @@ class Signup extends React.Component {
                         <Form.Group>
                             <Form.Check type="checkbox" label="Terms and conditions" style={{ 'color': 'black' }} />
                         </Form.Group>
-                        <Button variant="primary" type="submit">Submit</Button>
+                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
                     </Form>
                 </Card>
             </div>
