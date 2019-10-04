@@ -3,7 +3,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
 import SignInLinks from './SignInLinks';
 import SignOutLinks from './SignOutLinks';
-import fire from '../../config/fire';
+import  { fire }   from '../../config/fire';
 
 
 export default class NavBar extends React.Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
-import fire from '../config/fire';
+import  { fire }   from '../config/fire';
 
 class Login extends React.Component {
 
