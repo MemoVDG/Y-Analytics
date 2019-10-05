@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
-import  { fire }   from '../config/fire';
+import { myFirebase } from '../firebase/firebase';
+import NavbarPage from './NavbarLinks/NavbarPage';
+
 
 class Signup extends React.Component {
 
@@ -17,43 +19,47 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.state)
-        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+        myFirebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
 
-        }).then((u)=>{
+        }).then((u) => {
             console.log(u);
-        }).catch((error) =>{
+        }).catch((error) => {
             console.log(error);
         })
     }
 
     render() {
         return (
-            <div className="App-header">
-                <Card style={{ width: '30rem' }}>
+            <div>
+                <NavbarPage />
+                <div className="App-header">
+                    <Card style={{ width: '30rem' }}>
 
-                    <Form className="m-3 white">
+                        <Form className="m-3 white">
 
-                        <Form.Group>
-                            <Form.Label style={{ 'color': 'black' }} >Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" id='email' onChange={this.handleChange} />
-                        </Form.Group>
+                            <Form.Group>
+                                <Form.Label style={{ 'color': 'black' }} >Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" id='email' onChange={this.handleChange} />
+                            </Form.Group>
 
-                        <Form.Group>
-                            <Form.Label style={{ 'color': 'black' }}>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" id='password' onChange={this.handleChange} />
-                        </Form.Group>
+                            <Form.Group>
+                                <Form.Label style={{ 'color': 'black' }}>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" id='password' onChange={this.handleChange} />
+                            </Form.Group>
 
-                        <Form.Group>
-                            <Form.Label style={{ 'color': 'black' }} >Full Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Full Name" id='full_name' onChange={this.handleChange} />
-                        </Form.Group>
+                            <Form.Group>
+                                <Form.Label style={{ 'color': 'black' }} >Full Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Full Name" id='full_name' onChange={this.handleChange} />
+                            </Form.Group>
 
-                        <Form.Group>
-                            <Form.Check type="checkbox" label="Terms and conditions" style={{ 'color': 'black' }} />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
-                    </Form>
-                </Card>
+                            <Form.Group>
+                                <Form.Check type="checkbox" label="Terms and conditions" style={{ 'color': 'black' }} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
+                        </Form>
+                    </Card>
+                </div>
+
             </div>
         )
     };

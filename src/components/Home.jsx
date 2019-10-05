@@ -21,10 +21,12 @@ class Home extends Component {
     );
   }
 }
+
 function mapStateToProps(state) {
   return {
     isLoggingOut: state.auth.isLoggingOut,
     logoutError: state.auth.logoutError
   };
 }
+
 export default connect(mapStateToProps)(Home);

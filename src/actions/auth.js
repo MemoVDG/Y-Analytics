@@ -1,4 +1,4 @@
-import { fire } from "../config/fire";
+import { myFirebase } from "../firebase/firebase";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -62,11 +62,12 @@ const verifySuccess = () => {
 
 export const loginUser = (email, password) => dispatch => {
   dispatch(requestLogin());
-  fire
+  myFirebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(user => {
       dispatch(receiveLogin(user));
+      console.log(user);
     })
     .catch(error => {
       //Do something with the error if you want!
@@ -76,7 +77,7 @@ export const loginUser = (email, password) => dispatch => {
 
 export const logoutUser = () => dispatch => {
   dispatch(requestLogout());
-  fire
+  myFirebase
     .auth()
     .signOut()
     .then(() => {
@@ -90,7 +91,7 @@ export const logoutUser = () => dispatch => {
 
 export const verifyAuth = () => dispatch => {
   dispatch(verifyRequest());
-  fire.auth().onAuthStateChanged(user => {
+  myFirebase.auth().onAuthStateChanged(user => {
     if (user !== null) {
       dispatch(receiveLogin(user));
     }
