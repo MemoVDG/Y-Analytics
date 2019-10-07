@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { connect } from 'react-redux';
 import Home from "./components/Home";
 import Signup from './components/Signup';
-import Login2 from './components/Login2';
+import Analize from './components/Analize';
 
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
@@ -16,6 +16,7 @@ function App(props) {
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/analyze" component={Analize} />
       <ProtectedRoute
         exact
         path="/home"
@@ -23,8 +24,7 @@ function App(props) {
         isAuthenticated={isAuthenticated}
         isVerifying={isVerifying}
       />
-      <Route path="/" component={Dashboard} />
-      <Route path="/ha" component={Login2} />
+      <Route path="/" component={Dashboard} exact/>
     </Switch>
   );
 }
