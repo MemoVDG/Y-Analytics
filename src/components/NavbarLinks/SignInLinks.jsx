@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router, NavLink } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap'
-import fire from '../../config/fire'
+import  { fire }   from '../../config/fire';
 
 class SignInLinks extends React.Component {
 
