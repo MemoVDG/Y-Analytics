@@ -13,7 +13,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-
+import PayPal from './PayPal';
 
 
 
@@ -54,6 +54,9 @@ class PaymentModal extends React.Component {
                     aria-labelledby="form-dialog-title"
                 >
                     <DialogTitle id="form-dialog-title">Agregar metodo de pago</DialogTitle>
+                    <DialogContent>
+                        <PayPal/>
+                    </DialogContent>
                 </Dialog>
             </div>
         )
