@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
-import { myFirebase } from '../firebase/firebase';
 import NavbarPage from './NavbarLinks/NavbarPage';
 import { signUpUser } from '../actions';
 import { connect } from 'react-redux';
@@ -33,7 +31,7 @@ class Signup extends React.Component {
             return (
                 <div>
                     <NavbarPage />
-                    <div className="App-header">
+                    {/* <div className="App-header">
                         <Card style={{ width: '30rem' }}>
 
                             <Form className="m-3 white">
@@ -59,7 +57,7 @@ class Signup extends React.Component {
                                 <Button variant="primary" type="button" onClick={this.handleSubmit}>Submit</Button>
                             </Form>
                         </Card>
-                    </div>
+                    </div> */}
 
                 </div>
             )

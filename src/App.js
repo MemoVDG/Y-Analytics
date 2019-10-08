@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -10,22 +9,45 @@ import Home from "./components/Home";
 import Signup from './components/Signup';
 import Analize from './components/Analize';
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+
+const theme = createMuiTheme({
+    typography: {
+        useNextVariants: true,
+        fontFamily: "Comic Sans MS",
+      },
+      palette: {
+        primary : { 
+          light: '#ffffff',
+          main: '#d9eddf',
+          dark: '#a7bbad',
+        },
+        secondary: {
+          light: '#6dffd4',
+          main: '#25d8a3',
+          dark: '#00a574',
+        }
+    },
+})
+
 function App(props) {
   const { isAuthenticated, isVerifying } = props;
   return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
-      <Route path="/analyze" component={Analize} />
-      <ProtectedRoute
-        exact
-        path="/home"
-        component={Home}
-        isAuthenticated={isAuthenticated}
-        isVerifying={isVerifying}
-      />
-      <Route path="/" component={Dashboard} exact/>
-    </Switch>
+    <MuiThemeProvider theme={theme}>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/analyze" component={Analize} />
+        <ProtectedRoute
+          exact
+          path="/home"
+          component={Home}
+          isAuthenticated={isAuthenticated}
+          isVerifying={isVerifying}
+        />
+        <Route path="/" component={Dashboard} exact />
+      </Switch>
+    </MuiThemeProvider>
   );
 }
 

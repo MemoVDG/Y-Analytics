@@ -1,6 +1,9 @@
+/* Load in your font */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 .App {
   text-align: center;
-  font-family: ''
+  font-family: "'Lato', sans-serif"; 
 }
 
 .App-logo {
@@ -22,6 +25,8 @@
   color: #09d3ac;
 }
 
-body{
-  font-family: 'Gloria Hallelujah', cursive;
+body {
+  margin: 0;
+  padding: 0;
 }
+
