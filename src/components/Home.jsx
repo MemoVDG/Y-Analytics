@@ -10,7 +10,6 @@ import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import Cards from './Cards';
 import logo from '../images/logo.png'
-import Grid from '@material-ui/core/Grid';
 
 
 
@@ -44,7 +43,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-// width: "70%", margin: 10, padding: 10, display: 'flex', flexDirection: 'row', flexWrap : 'wrap', justifyContent : 'space-around'
 
 function Home(props) {
 

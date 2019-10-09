@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import PaymentModal from './PaymentModal';
+import PaymentModal from './Payment/PaymentModal';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 

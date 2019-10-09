@@ -39,7 +39,7 @@ function Product({ product }) {
     return (
       <div>
         <h1>Congrats, you just bought {product.name}!</h1>
-        <img alt={product.description} src={'https://static.makeuseof.com/wp-content/uploads/2011/12/facebook-icon.jpg'} />
+        <img alt={product.description} src={'https://i.imgur.com/s9bPVaK.gif?2'} />
       </div>
     );
   }
@@ -47,9 +47,9 @@ function Product({ product }) {
   return (
     <div>
       {error && <div>Uh oh, an error occurred! {error.message}</div>}
-      <h1>
+      <p style={{fontFamily : 'Comic Sans MS'}}>
         {product.description} for ${product.price}
-      </h1>
+      </p>
       <img alt={product.description} src={product.image} width="200" />
       <div ref={paypalRef} />
     </div>
@@ -59,9 +59,9 @@ function Product({ product }) {
 function PayPal() {
   const product = {
     price: 1,
-    name: 'comfy chair',
-    description: 'fancy chair, like new',
-    image: 'https://svn.alfresco.com/repos/alfresco-open-mirror/alfresco/HEAD/root/projects/repository/config/alfresco/thumbnail/thumbnail_placeholder_256_ai.png',
+    name: 'Subscription to Y-Analytics',
+    description: 'Subscription for one year to our premium service to analyze all your videos',
+    image: 'https://res.cloudinary.com/memovdg/image/upload/v1570661489/green_logo_e2twn6.png',
   };
 
   return (
