@@ -3,17 +3,10 @@ import NavbarPage from './NavbarLinks/NavbarPage';
 import { loginUser } from "../actions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
-import Card from '@material-ui/core/Card';
-
-
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -29,7 +22,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Y-Analytics
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -75,8 +68,7 @@ function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () =>{
-    console.log(email, password)
+  const handleSubmit = () => {
     dispatch(loginUser(email, password));
   }
 
@@ -94,7 +86,7 @@ function Login(props) {
               <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
               </Avatar>
-              <Typography component="h1" variant="h5" color={'primary'}>Sign in</Typography>
+              <Typography component="h1" variant="h5" color={'textSecondary'}>Sign in</Typography>
               <form className={classes.form} noValidate>
                 <TextField
                   variant="outlined"
@@ -105,7 +97,7 @@ function Login(props) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange = {e => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   autoFocus
                 />
                 <TextField
@@ -116,13 +108,9 @@ function Login(props) {
                   name="password"
                   label="Password"
                   type="password"
-                  onChange = {e => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                   id="password"
                   autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
                 />
                 <Button
                   fullWidth
@@ -135,14 +123,10 @@ function Login(props) {
           </Button>
                 <Grid container>
                   <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-              </Link>
+                    <Link href="#" variant="body2" color={"textSecondary"}>Forgot password?</Link>
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
+                    <Link href="/signup" variant="body2" color={"textSecondary"}>{"Don't have an account? Sign Up"}</Link>
                   </Grid>
                 </Grid>
               </form>
