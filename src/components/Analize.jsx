@@ -11,11 +11,11 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-            <NavbarLinks/>
+                <NavbarLinks />
                 <div className="App-header">
-                    <img src="https://timedotcom.files.wordpress.com/2018/12/square-meghan-markle-person-of-the-year-2018.jpg?quality=85" alt="Avatar" style={{borderRadius : 50, width : 100}}/>
+                    <img src="https://timedotcom.files.wordpress.com/2018/12/square-meghan-markle-person-of-the-year-2018.jpg?quality=85" alt="Avatar" style={{ borderRadius: 50, width: 100 }} />
                     <Typography>
-                        Megan 
+                        Megan
                     </Typography>
                     <Typography>
                         Description
@@ -27,10 +27,10 @@ class Login extends React.Component {
                             Analyze my videos
                         </Link>
                     </Button>
-                    <BarChart/>
+                    <BarChart />
 
                 </div>
-                
+
             </div>
         );
     }
