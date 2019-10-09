@@ -14,7 +14,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import PayPal from './PayPal';
-
+import PaymentIcon from '@material-ui/icons/Payment';
 
 
 
@@ -46,7 +46,8 @@ class PaymentModal extends React.Component {
                     color="primary"
                     onClick={this.handleClickOpen}
                 >
-                    Agregar
+                    <PaymentIcon/>
+                    Subscribe 
                 </Button>
                 <Dialog
                     open={this.state.open}

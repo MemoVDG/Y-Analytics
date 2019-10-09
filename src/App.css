@@ -21,9 +21,36 @@
   color: white;
 }
 
+.App-content {
+  background-color: #25D8A3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2vmin;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
 .App-link {
   color: #09d3ac;
 }
+
+.Card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.Paper-cards {
+  width: "70%";
+  display: flex;
+  flex-direction : column;
+  margin : 10; 
+  padding : 10;
+}
+
 
 body {
   margin: 0;

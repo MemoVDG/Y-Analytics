@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NavbarPage from './NavbarLinks/NavbarPage';
-import { loginUser } from "../actions";
+import NavbarPage from '../NavbarLinks/NavbarPage';
+import { loginUser } from "../../actions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Avatar from '@material-ui/core/Avatar';

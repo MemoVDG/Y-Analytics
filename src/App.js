@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
-import Login from './components/Login';
+import Login from './components/Auth/Login';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { connect } from 'react-redux';
 import Home from "./components/Home";
-import Signup from './components/Signup';
+import Signup from './components/Auth/Signup';
 import Analize from './components/Analize';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NavbarPage from './NavbarLinks/NavbarPage';
-import { signUpUser } from '../actions';
+import NavbarPage from '../NavbarLinks/NavbarPage';
+import { signUpUser } from '../../actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
