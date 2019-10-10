@@ -1,4 +1,5 @@
 import { myFirebase } from "../firebase/firebase";
+import { db } from "../firebase/firebase";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -14,6 +15,11 @@ export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
+export const DATA_REQUEST = "DATA_REQUEST";
+export const DATA_SUCCESS = "DATA_SUCCESS";
+export const DATA_ERROR = "DATA_ERROR";
+
 
 const requestSignUp = () => {
   return {
@@ -84,18 +90,44 @@ const verifySuccess = () => {
   };
 };
 
-export const signUpUser = (email, password) => dispatch =>{
+const requestData = () => {
+  return {
+    type: DATA_REQUEST
+  };
+};
+
+const receiveData = (userData) => {
+  return {
+    type: DATA_SUCCESS,
+    userData
+  };
+};
+
+const dataError = () => {
+  return {
+    type: DATA_ERROR
+  }
+}
+
+
+
+export const signUpUser = (email, password, firstName, lastName) => dispatch => {
   dispatch(requestSignUp());
   myFirebase
-  .auth()
-  .createUserWithEmailAndPassword(email, password)
-  .then(user =>{
-    dispatch(receiveSignUp(user));
-  })
-  .catch(error =>{
-    dispatch(SignUpError());
-  });
-  
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(user => {
+      return db.collection('users').doc(user.user.uid).set({
+        user: user.user.uid,
+        firstName: firstName,
+        lastName: lastName,
+        isSubscriber: false,
+      }).then(dispatch(receiveSignUp(user)));
+    })
+    .catch(error => {
+      dispatch(SignUpError());
+    });
+
 };
 
 
@@ -136,4 +168,16 @@ export const verifyAuth = () => dispatch => {
     }
     dispatch(verifySuccess());
   });
+};
+
+export const getDataUser = (uid) => dispatch => {
+  dispatch(requestData());
+  db.collection('users').where("user", "==", uid).get()
+    .then(querySnapShot => {
+      const data =  querySnapShot.docs.map(doc => doc.data());
+      dispatch(receiveData(data))
+    })
+    .catch(error => {
+      dispatch(dataError())
+    });
 };

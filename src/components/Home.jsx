@@ -9,7 +9,9 @@ import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import SearchIcon from '@material-ui/icons/Search';
 import Cards from './Cards';
-import logo from '../images/logo.png'
+import logo from '../images/logo.png';
+import { getDataUser } from '../actions';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -48,12 +50,13 @@ function Home(props) {
 
   const [search, setSearch] = useState('');
   const [channels, setChannels] = useState([]);
-  const { isLoggingOut, logoutError } = props;
+  const { isLoggingOut, logoutError, user, userData } = props;
   const classes = useStyles();
+  const dispatch = useDispatch();
+
 
 
   const handleClick = async () => {
-    console.log(search);
     const response = await api.get('/search', {
       params: {
         ...baseParams,
@@ -63,14 +66,14 @@ function Home(props) {
     setChannels(response.data.items);
   }
 
-  useEffect(() => {
-    filterData();
-  });
+  useEffect(() =>{
 
+    async function getData (){
+      dispatch(getDataUser(user.uid))
+    }
 
-  const filterData = () => {
-    console.log(channels);
-  }
+    getData()
+  },[]);
 
 
   return (
@@ -96,7 +99,7 @@ function Home(props) {
             {channels.length > 0 ?
               (channels).map((n) => {
                 return (
-                  <Cards data={n} />
+                  <Cards data={n} isSubscriber = {(userData[0] || {}).isSubscriber } />
                 )
               })
               :
@@ -113,7 +116,9 @@ function Home(props) {
 function mapStateToProps(state) {
   return {
     isLoggingOut: state.auth.isLoggingOut,
-    logoutError: state.auth.logoutError
+    logoutError: state.auth.logoutError,
+    user : state.auth.user,
+    userData : state.auth.userData,
   };
 }
 

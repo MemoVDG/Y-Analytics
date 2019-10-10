@@ -36,7 +36,6 @@ function NavbarPage(props) {
           <Link to='/' className={classes.textlink}>Y-Analytics</Link>
         </Typography>
         {/* Check if user is authenticated */}
-        {console.log(isAuthenticated)}
         {isAuthenticated ?
           <SignOutLinks />
           :

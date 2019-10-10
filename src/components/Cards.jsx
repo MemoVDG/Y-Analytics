@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 function MediaControlCard(props) {
     const classes = useStyles();
 
+
     return (
         <Card className={classes.card}>
             <CardActionArea>
@@ -42,8 +43,13 @@ function MediaControlCard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions className='Card-actions'>
-                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to={'/analyze/' +props.data.snippet.channelId} className={classes.textlink}>Analize</Link></Button>
-                <PaymentModal />
+                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to={'/analyze/' + props.data.snippet.channelId} className={classes.textlink}>Analize</Link></Button>
+
+                { ! props.isSubscriber ?
+                    <PaymentModal />
+                    :
+                    null
+                }
             </CardActions>
         </Card>
     );
@@ -51,7 +57,6 @@ function MediaControlCard(props) {
 
 MediaControlCard.propTypes = {
     classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired
 };
 
 export default MediaControlCard;

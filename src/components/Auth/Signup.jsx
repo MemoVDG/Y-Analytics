@@ -74,8 +74,7 @@ function Signup(props) {
 
 
     const handleSubmit = (e) => {
-        console.log(email, password, firstName, lastName)
-        dispatch(signUpUser(email, password));
+        dispatch(signUpUser(email, password, firstName, lastName));
 
     }
     const { signUpError, isAuthenticated } = props;

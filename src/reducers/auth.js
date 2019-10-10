@@ -6,7 +6,10 @@ import {
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
     VERIFY_REQUEST,
-    VERIFY_SUCCESS
+    VERIFY_SUCCESS,
+    DATA_REQUEST,
+    DATA_SUCCESS,
+    DATA_ERROR
   } from "../actions/";
   
   export default (
@@ -17,11 +20,33 @@ import {
       loginError: false,
       logoutError: false,
       isAuthenticated: false,
-      user: {}
+      isDataRequest : false,
+      isDataSucces : false,
+      isDataError : false,
+      user: {},
+      userData : {},
     },
     action
   ) => {
     switch (action.type) {
+      case DATA_REQUEST :
+        return{
+          ...state,
+          isDataRequest : true,
+          isDataError : false,
+        };
+      case DATA_SUCCESS :
+        return {
+          ...state,
+          isDataSucces : true,
+          isDataRequest : false,
+          userData : action.userData
+        };
+      case DATA_ERROR :
+        return{
+          isDataError : true,
+          isDataSucces : false
+        };
       case LOGIN_REQUEST:
         return {
           ...state,
