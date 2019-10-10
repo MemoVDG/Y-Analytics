@@ -9,11 +9,14 @@ import {
     VERIFY_SUCCESS,
     DATA_REQUEST,
     DATA_SUCCESS,
-    DATA_ERROR
+    DATA_ERROR,
+    UPDATING_REQUEST,
+    UPDATING_SUCCESS,
   } from "../actions/";
   
   export default (
     state = {
+      isUpdating : false,
       isLoggingIn: false,
       isLoggingOut: false,
       isVerifying: false,
@@ -29,6 +32,17 @@ import {
     action
   ) => {
     switch (action.type) {
+      case UPDATING_REQUEST :
+        return{
+          ...state,
+          isUpdating : true,
+          updatingError : false
+        };
+      case UPDATING_SUCCESS:
+        return {
+          ...state,
+          isUpdating : false
+        }
       case DATA_REQUEST :
         return{
           ...state,

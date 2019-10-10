@@ -10,7 +10,6 @@ import Divider from '@material-ui/core/Divider';
 
 
 
-
 class PaymentModal extends React.Component {
 
 
@@ -55,6 +54,8 @@ class PaymentModal extends React.Component {
         )
     }
 }
+
+
 
 
 export default PaymentModal;

@@ -20,6 +20,21 @@ export const DATA_REQUEST = "DATA_REQUEST";
 export const DATA_SUCCESS = "DATA_SUCCESS";
 export const DATA_ERROR = "DATA_ERROR";
 
+export const UPDATING_REQUEST = "UPDATING_REQUEST";
+export const UPDATING_SUCCESS = "UPDATING_SUCCESS";
+
+const requestUpdate = () =>{
+  return {
+    type : UPDATING_REQUEST
+  };
+}
+
+const updatingSuccess = () =>{
+  return {
+    type : UPDATING_SUCCESS
+  };
+}
+
 
 const requestSignUp = () => {
   return {
@@ -178,6 +193,19 @@ export const getDataUser = (uid) => dispatch => {
       dispatch(receiveData(data))
     })
     .catch(error => {
-      dispatch(dataError())
+      dispatch(dataError());
     });
 };
+
+
+export const updateData = (uid) => dispatch =>{
+  dispatch(requestUpdate());
+  db.collection('users').doc(uid).update({
+    isSubscriber : true
+  }).then(()=>{
+    dispatch(updatingSuccess());
+    setTimeout(()=>{
+      window.location.reload();
+    },3000)
+  })
+}

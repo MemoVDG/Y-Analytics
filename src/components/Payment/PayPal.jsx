@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { updateData } from '../../actions';
+import { useDispatch, connect } from 'react-redux';
 
 
-function Product({ product }) {
+function Product({ product, user }) {
   const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState(null);
   const paypalRef = useRef();
+  const dispatch = useDispatch()
+
 
   useEffect(() => {
     window.paypal
@@ -25,6 +29,7 @@ function Product({ product }) {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           setPaidFor(true);
+          dispatch(updateData(user.uid))
           console.log(order);
         },
         onError: err => {
@@ -56,7 +61,9 @@ function Product({ product }) {
   );
 }
 
-function PayPal() {
+function PayPal(props) {
+  const { user } = props;
+
   const product = {
     price: 1,
     name: 'Subscription to Y-Analytics',
@@ -66,9 +73,15 @@ function PayPal() {
 
   return (
     <div className="App">
-      <Product product={product} />
+      <Product product={product} user={user} />
     </div>
   );
 }
 
-export default PayPal;
+function mapStateToProps(state){
+  return{
+    user : state.auth.user,
+  };
+} 
+
+export default connect(mapStateToProps)(PayPal);
