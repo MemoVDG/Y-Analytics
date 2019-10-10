@@ -42,7 +42,7 @@ function MediaControlCard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions className='Card-actions'>
-                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to='/analyze' className={classes.textlink}>Analize</Link></Button>
+                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to={'/analyze/' +props.data.snippet.channelId} className={classes.textlink}>Analize</Link></Button>
                 <PaymentModal />
             </CardActions>
         </Card>

@@ -1,39 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavbarLinks from './NavbarLinks/NavbarPage';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import BarChart from './BarChart';
 import Button from '@material-ui/core/Button';
 import { Route, Link, BrowserRouter as Router, NavLink } from 'react-router-dom';
 import AssessmentIcon from '@material-ui/icons/Assessment';
+import api, { baseParams } from '../api';
+import { makeStyles } from '@material-ui/core/styles';
 
-class Login extends React.Component {
+const useStyles = makeStyles({
+    textlink: {
+        color: 'inherit',
+        textDecoration: 'inherit'
+    },
+    marginStyle : {
+        margin : 10
+    }
+});
 
-    render() {
-        return (
-            <div>
-                <NavbarLinks />
-                <div className="App-header">
-                    <img src="https://timedotcom.files.wordpress.com/2018/12/square-meghan-markle-person-of-the-year-2018.jpg?quality=85" alt="Avatar" style={{ borderRadius: 50, width: 100 }} />
-                    <Typography>
-                        Megan
-                    </Typography>
-                    <Typography>
-                        Description
-                    </Typography>
+function Login(props) {
 
-                    <Button variant="contained" >
-                        <AssessmentIcon />
-                        <Link to='/home'>
-                            Analyze my videos
-                        </Link>
-                    </Button>
-                    <BarChart />
+    const [channelInfo, setChannelInfo] = useState([]);
+    const classes = useStyles();
 
-                </div>
+
+    useEffect( () => {
+        const { match: { params } } = props; 
+        console.log(params);
+
+        async function fetchData (){
+            const response = await api.get('/channels', {
+                params: {
+                    ...baseParams,
+                    id: params.userId
+                }
+            });
+            setChannelInfo(response.data.items[0].snippet)        }
+        fetchData();
+    }, []);
+
+    return (
+        <div>
+            <NavbarLinks />
+            { console.log((((channelInfo || {}).thumbnails || {}).default || {}).url)}
+            <div className="App-content">
+                <img src={(((channelInfo || {}).thumbnails || {}).default || {}).url} alt="Avatar" style={{ borderRadius: 50, width: 100 }} />
+                <Typography variant='h3'>{channelInfo.title}</Typography>
+                <Grid container style={{ width: "50%", margin : 10, textAlign : 'center'}}>
+                    <Grid item xs= {6}>
+                        <Typography variant='h5'>87 % Positive Comments</Typography>
+                    </Grid>
+                    <Grid item xs= {6}>
+                        <Typography variant='h5'>87 % Negative Comments</Typography>
+                    </Grid>
+                </Grid>
+                {/* <Typography style={{ width: "50%", margin : 10 }}>{channelInfo.description}</Typography> */}
+
+                <Button variant="contained" className={classes.marginStyle}>
+                    <AssessmentIcon />
+                    <Link to='/home' className={classes.textlink}> Analyze my videos</Link>
+                </Button>
+                <BarChart />
 
             </div>
-        );
-    }
+
+        </div>
+    );
 }
 
 
