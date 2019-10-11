@@ -30,6 +30,7 @@ function MediaControlCard(props) {
     return (
         <Card className={classes.card}>
             <CardActionArea>
+                {console.log(props.data)}
                 <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
@@ -38,12 +39,13 @@ function MediaControlCard(props) {
                     title="Contemplative Reptile"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">{props.data.snippet.channelTitle}</Typography>
+                    <Typography gutterBottom variant="h5">{props.data.snippet.channelTitle}</Typography>
+                    <Typography gutterBottom variant="h6">{props.data.snippet.title}</Typography>
                     <Typography variant="body2" color="textSecondary" component="p">{props.data.snippet.description}</Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions className='Card-actions'>
-                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to={'/analyze/' + props.data.snippet.channelId} className={classes.textlink}>Analize</Link></Button>
+                <Button variant="contained" size="small" color="primary"><AssessmentIcon /><Link to={'/analyze/' + props.data.snippet.channelId + '/' + props.data.id.videoId} className={classes.textlink}>Analize</Link></Button>
 
                 { ! props.isSubscriber ?
                     <PaymentModal />

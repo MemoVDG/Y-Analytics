@@ -3,7 +3,7 @@ import NavbarLinks from './NavbarLinks/NavbarPage';
 import { Typography, Grid } from '@material-ui/core';
 import BarChart from './BarChart';
 import Button from '@material-ui/core/Button';
-import { Route, Link, BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import api, { baseParams } from '../api';
 import { makeStyles } from '@material-ui/core/styles';
@@ -54,8 +54,6 @@ function Login(props) {
                         <Typography variant='h5'>87 % Negative Comments</Typography>
                     </Grid>
                 </Grid>
-                {/* <Typography style={{ width: "50%", margin : 10 }}>{channelInfo.description}</Typography> */}
-
                 <Button variant="contained" className={classes.marginStyle}>
                     <AssessmentIcon />
                     <Link to='/home' className={classes.textlink}> Analyze my videos</Link>

@@ -37,7 +37,7 @@ function App(props) {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/analyze/:userId" component={Analize} />
+        <Route path="/analyze/:userId/:videoId" component={Analize} />
         <ProtectedRoute
           exact
           path="/home"

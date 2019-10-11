@@ -50,13 +50,19 @@ function Home(props) {
 
   const [search, setSearch] = useState('');
   const [channels, setChannels] = useState([]);
-  const { isLoggingOut, logoutError, user, userData } = props;
+  const {user, userData } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
 
 
 
   const handleClick = async () => {
+
+    async function getData (){
+      dispatch(getDataUser(user.uid))
+    };
+
+    getData()
     const response = await api.get('/search', {
       params: {
         ...baseParams,
@@ -65,16 +71,6 @@ function Home(props) {
     });
     setChannels(response.data.items);
   }
-
-  useEffect(() =>{
-
-    async function getData (){
-      dispatch(getDataUser(user.uid))
-    }
-
-    getData()
-  },[]);
-
 
   return (
     <div>
@@ -88,7 +84,6 @@ function Home(props) {
             onChange={e => setSearch(e.target.value)}
           />
           <Divider className={classes.divider} orientation="vertical" />
-
           <IconButton className={classes.iconButton} aria-label="search" onClick={handleClick}>
             <SearchIcon />
           </IconButton>
@@ -99,7 +94,10 @@ function Home(props) {
             {channels.length > 0 ?
               (channels).map((n) => {
                 return (
-                  <Cards data={n} isSubscriber = {(userData[0] || {}).isSubscriber } />
+                  n.id.kind === "youtube#video" ? 
+                    <Cards data={n} isSubscriber = {(userData[0] || {}).isSubscriber } />
+                  :
+                    null
                 )
               })
               :
