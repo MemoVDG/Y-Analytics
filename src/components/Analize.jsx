@@ -7,58 +7,69 @@ import { Link } from 'react-router-dom';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import api, { baseParams } from '../api';
 import { makeStyles } from '@material-ui/core/styles';
+import apiAnalysis from '../apiAnalysis';
 
 const useStyles = makeStyles({
     textlink: {
         color: 'inherit',
         textDecoration: 'inherit'
     },
-    marginStyle : {
-        margin : 10
+    marginStyle: {
+        margin: 10
     }
 });
 
 function Login(props) {
 
     const [channelInfo, setChannelInfo] = useState([]);
+    const [analysis, setAnalysis] = useState({});
     const classes = useStyles();
 
 
-    useEffect( () => {
-        const { match: { params } } = props; 
-        console.log(params);
+    useEffect(() => {
+        const { match: { params } } = props;
+        async function fetchAnalysis() {
+            const response = await apiAnalysis.get('/search_api?videoId=' + params.videoId);
+            setAnalysis(response);
+        }
 
-        async function fetchData (){
+        fetchAnalysis();
+
+        async function fetchData() {
             const response = await api.get('/channels', {
                 params: {
                     ...baseParams,
                     id: params.userId
                 }
             });
-            setChannelInfo(response.data.items[0].snippet)        }
+            setChannelInfo(response.data.items[0].snippet)
+        }
         fetchData();
     }, []);
 
     return (
         <div>
             <NavbarLinks />
-            { console.log((((channelInfo || {}).thumbnails || {}).default || {}).url)}
             <div className="App-content">
                 <img src={(((channelInfo || {}).thumbnails || {}).default || {}).url} alt="Avatar" style={{ borderRadius: 50, width: 100 }} />
                 <Typography variant='h3'>{channelInfo.title}</Typography>
-                <Grid container style={{ width: "50%", margin : 10, textAlign : 'center'}}>
-                    <Grid item xs= {6}>
-                        <Typography variant='h5'>87 % Positive Comments</Typography>
+                <Grid container style={{ width: "50%", margin: 10, textAlign: 'center' }}>
+                    <Grid item xs={6}>
+                        <Typography variant='h5'>{isNaN(((((analysis.data || {}).polarity || {}).positive || {}).percent) * 100) ? '' : ((((analysis.data || {}).polarity || {}).positive || {}).percent) * 100} % Positive Comments</Typography>
                     </Grid>
-                    <Grid item xs= {6}>
-                        <Typography variant='h5'>87 % Negative Comments</Typography>
+                    <Grid item xs={6}>
+                        <Typography variant='h5'>{isNaN(((((analysis.data || {}).polarity || {}).positive || {}).percent) * 100) ? '' : ((((analysis.data || {}).polarity || {}).negative || {}).percent) * 100} % Negative Comments</Typography>
                     </Grid>
                 </Grid>
                 <Button variant="contained" className={classes.marginStyle}>
                     <AssessmentIcon />
                     <Link to='/home' className={classes.textlink}> Analyze my videos</Link>
                 </Button>
-                <BarChart />
+                {analysis.data ?
+                    <BarChart positive = {((((analysis.data || {}).polarity || {}).positive || {}).percent) * 100} negative = {((((analysis.data || {}).polarity || {}).negative || {}).percent) * 100} />
+                    :
+                    null
+                }
 
             </div>
 
