@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Y-Analytcis 
+
+Midterm project for ML course with Siraj Raval.
+Developed by @josealb and @Memo28
+
+## Overview 
+We created a React App and API REST for Youtube user to analyze the youtube comment videos an apply sentiment analysis and in that way the youtubers can obtain qualitative insights to understand how people are talking about their brand.
+
+## React App
+Clone the project with
+
+### `git clone https://github.com/Memo28/Y-Analytics.git`
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
 
+To install the dependencies
+
+Then you need to get your youtube API key credentials and Firebase credentials from
+
+https://console.cloud.google.com/
+
+Set the youtube api credential in the src/api.js file and the firebase API credential src/firebase/firebase.js
+
+Then run the app with
+
+### `npm install`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## App Overview
+![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919533/1_vtx844.png) ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919541/3_tuncdf.png)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919540/4_uuopnc.png) ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919537/5_iqqjpw.png)
+## Tech Stack
 
-### `npm run build`
+###### Front-end by @Memo28
+* React
+  * Redux
+  * Firebase
+  * Material UI
+  
+###### Back-end by @josealb
+* Python
+  * Flask
+  * Textblob
+  * youtube-data-api
+  * flask-cors
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
