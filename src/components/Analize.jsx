@@ -8,6 +8,8 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import api, { baseParams } from '../api';
 import { makeStyles } from '@material-ui/core/styles';
 import apiAnalysis from '../apiAnalysis';
+import { css } from '@emotion/core';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const useStyles = makeStyles({
     textlink: {
@@ -18,6 +20,13 @@ const useStyles = makeStyles({
         margin: 10
     }
 });
+
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+`;
 
 function Login(props) {
 
@@ -68,7 +77,15 @@ function Login(props) {
                 {analysis.data ?
                     <BarChart positive = {((((analysis.data || {}).polarity || {}).positive || {}).percent) * 100} negative = {((((analysis.data || {}).polarity || {}).negative || {}).percent) * 100} />
                     :
-                    null
+                    <div style={{marginTop:100}}>
+                    <PulseLoader
+                    css= {override}
+                    sizeUnit={'px'}
+                    size={70}
+                    color={'#BD10E0'}
+                    loading={true}
+                    />
+                    </div>
                 }
 
             </div>
