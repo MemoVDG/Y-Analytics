@@ -4,6 +4,8 @@
 Midterm project for ML course with Siraj Raval.
 Developed by @josealb and @Memo28
 
+### [APP](https://dry-cliffs-19533.herokuapp.com/)
+
 ## Overview 
 We created a React App and API REST for Youtube user to analyze the youtube comment videos an apply sentiment analysis and in that way the youtubers can obtain qualitative insights to understand how people are talking about their brand.
 
@@ -37,13 +39,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919540/4_uuopnc.png) ![alt text](https://res.cloudinary.com/memovdg/image/upload/c_scale,w_400/v1570919537/5_iqqjpw.png)
 ## Tech Stack
 
-###### Front-end by @Memo28
+###### [Front-end by @Memo28](https://github.com/Memo28/Y-Analytics)
 * React
   * Redux
   * Firebase
   * Material UI
   
-###### Back-end by @josealb
+###### [Back-end by @josealb](https://github.com/josealb/youtube-analytics)
 * Python
   * Flask
   * Textblob
