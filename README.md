@@ -28,7 +28,7 @@ Set the youtube api credential in the src/api.js file and the firebase API crede
 
 Then run the app with
 
-### `npm install`
+### `npm start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
